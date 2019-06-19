@@ -4,9 +4,6 @@
 #
 #@author: VS
 
-#this code creates a video from a list of jpg files stored in a folder
-# it uses the libray openCV 
-
 import os
 import cv2
 
