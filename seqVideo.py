@@ -14,24 +14,28 @@ def main():
     """
     location = os.getcwd()
     images = []
-    fps = 10
+    fps = 20
+    outFile = ""
     try:
-        filenames = sorted((fn for fn in os.listdir(location) if fn.endswith('.jpg'))) # this iteration technique has no built in order, so sort the frames
+        filenames = sorted((fn for fn in os.listdir(location) if (fn.endswith('.jpeg') or fn.endswith('.jpg')))) # this iteration technique has no built in order, so sort the frames
         for filename in filenames:
             fm = cv2.imread(filename)
             images.append(fm)
         height, width, layers = fm.shape
         size = (width,height) 
-        outFile = cv2.VideoWriter('seq.avi',cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
-        for i in range(len(images)):
-            outFile.write(images[i])
+        outFile = cv2.VideoWriter('seq.mpeg',cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
+        for i,im in enumerate(images):
+            outFile.write(im)
+        cv2.destroyAllWindows()
         outFile.release()    
             
             
     except Exception as e:
         raise e
         print("No image files in here!")
+    return filenames
 
 if __name__ == "__main__":
-    main()
-
+    F = main()
+    print(F)
+    #out = input("Tap a button to close: ")
