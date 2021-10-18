@@ -23,7 +23,7 @@ def main():
             images.append(fm)
         height, width, layers = fm.shape
         size = (width,height) 
-        outFile = cv2.VideoWriter('seq.mpeg',cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
+        outFile = cv2.VideoWriter('seq.avi',cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
         for i,im in enumerate(images):
             outFile.write(im)
         cv2.destroyAllWindows()
@@ -38,4 +38,4 @@ def main():
 if __name__ == "__main__":
     F = main()
     print(F)
-    #out = input("Tap a button to close: ")
+    out = input("Tap a button to close ....\n ")
