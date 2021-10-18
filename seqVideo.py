@@ -26,6 +26,7 @@ def main():
         outFile = cv2.VideoWriter('seq.avi',cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
         for i,im in enumerate(images):
             outFile.write(im)
+        print("Number of processed images = ", i)
         cv2.destroyAllWindows()
         outFile.release()    
             
@@ -37,5 +38,5 @@ def main():
 
 if __name__ == "__main__":
     F = main()
-    print(F)
+    #print(F)
     out = input("Tap a button to close ....\n ")
