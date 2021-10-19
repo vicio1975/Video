@@ -10,6 +10,9 @@ The code uses the libray openCV. Before run this you need to install the opencv 
 	Once PIP is installed or you checked it is installed you can go on we the next step
 3. Install opencv by typing this command in the cmd terminal: "pip install opencv-python"
 
-The code can processes both jpeg and png pictures. 
+The code can processes both jpeg and png pictures.
+The code use the name of file to write a text in the picture: you can remove it or modify according to your needs. 
+
+Regards
 
 Reference: The full guid for PIP https://phoenixnap.com/kb/install-pip-windows
