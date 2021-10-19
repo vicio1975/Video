@@ -14,12 +14,32 @@ def main():
     """
     location = os.getcwd()
     images = []
-    fps = 20
+    fps = 25
     outFile = ""
+    font                   = cv2.FONT_HERSHEY_SIMPLEX
+    fontScale              = 0.5
+    fontColor              = (0,0,0)
+    lineType               = 1
+    
     try:
-        filenames = sorted((fn for fn in os.listdir(location) if (fn.endswith('.jpeg') or fn.endswith('.jpg')))) # this iteration technique has no built in order, so sort the frames
+        filenames = sorted((fn for fn in os.listdir(location) if (fn.endswith('.jpeg') or fn.endswith('.jpg') or fn.endswith('.png')))) # this iteration technique has no built in order, so sort the frames
         for filename in filenames:
             fm = cv2.imread(filename)
+            height, width, layers = fm.shape
+            time_text = "Flow time = "
+            if filename.endswith(".jpg"):
+                time_text_fig =  time_text + filename[-14:-5] + " sec"
+            elif filename.endswith(".jpeg"):
+                time_text_fig =  time_text + filename[-14:-6] + " sec"
+            elif filename.endswith(".png"):
+                time_text_fig =  time_text + filename[-14:-5] + " sec"
+            
+            cv2.putText(fm, time_text_fig,
+                        (5,height-10),
+                        font,
+                        fontScale,
+                        fontColor,
+                        lineType)
             images.append(fm)
         height, width, layers = fm.shape
         size = (width,height) 
@@ -39,4 +59,4 @@ def main():
 if __name__ == "__main__":
     F = main()
     #print(F)
-    out = input("Tap a button to close ....\n ")
+    #out = input("Tap a button to close ....\n ")
