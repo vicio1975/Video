@@ -10,11 +10,11 @@ import cv2
 def main():
 
     """
-    Thi is the main program
+    This is the main program
     """
-    location = os.getcwd()
-    images = []
-    fps = 25
+    location = os.getcwd()  #read the path where you put the code
+    images = [] #list of pictures
+    fps = 25    #frame rate
     outFile = ""
     font                   = cv2.FONT_HERSHEY_SIMPLEX
     fontScale              = 0.5
@@ -22,10 +22,15 @@ def main():
     lineType               = 1
     
     try:
+        #list of all picture files stored in the directory where you put the code
         filenames = sorted((fn for fn in os.listdir(location) if (fn.endswith('.jpeg') or fn.endswith('.jpg') or fn.endswith('.png')))) # this iteration technique has no built in order, so sort the frames
+
+        #Processing pictures
         for filename in filenames:
             fm = cv2.imread(filename)
             height, width, layers = fm.shape
+            
+            ###This is the section regarding the text on each picture
             time_text = "Flow time = "
             if filename.endswith(".jpg"):
                 time_text_fig =  time_text + filename[-14:-5] + " sec"
@@ -40,13 +45,22 @@ def main():
                         fontScale,
                         fontColor,
                         lineType)
+            #############################################################
+            
+            #creating the list of the pictures
             images.append(fm)
+            
         height, width, layers = fm.shape
-        size = (width, height) 
+        size = (width, height)
+        
+        #animation file 
         outFile = cv2.VideoWriter('seq.avi',cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
+
+        #creating the animation
         for i,im in enumerate(images):
             outFile.write(im)
-        print("Number of processed images = ", i)
+
+        #print("Number of processed images = ", i)
         cv2.destroyAllWindows()
         outFile.release()    
             
