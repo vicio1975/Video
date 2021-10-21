@@ -30,7 +30,7 @@ def main():
             if filename.endswith(".jpg"):
                 time_text_fig =  time_text + filename[-14:-5] + " sec"
             elif filename.endswith(".jpeg"):
-                time_text_fig =  time_text + filename[-14:-6] + " sec"
+                time_text_fig =  time_text + filename[-15:-6] + " sec"
             elif filename.endswith(".png"):
                 time_text_fig =  time_text + filename[-14:-5] + " sec"
             
@@ -42,7 +42,7 @@ def main():
                         lineType)
             images.append(fm)
         height, width, layers = fm.shape
-        size = (width,height) 
+        size = (width, height) 
         outFile = cv2.VideoWriter('seq.avi',cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
         for i,im in enumerate(images):
             outFile.write(im)
