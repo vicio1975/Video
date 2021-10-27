@@ -7,9 +7,9 @@ The code uses the libray openCV. Before run this you need to install the opencv 
 	--> if pip is installed the system will reply with the pipi help, otherwise you have to install pip;
 	
 	--> if pip is not installed then you have to follow these steps:
-		a. curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-		b. python get-pip.py
-		c. add pip to the system environment
+		a) curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+		b) python get-pip.py
+		c) add pip to the system environment
 		
 	Once PIP is installed or you checked it is installed you can go on we the next step.
 	
